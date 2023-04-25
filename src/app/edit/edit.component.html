@@ -1,0 +1,137 @@
+<br/><br/><br/><br/>
+<div class="data-form">
+
+    <form #bForm="ngForm" (ngSubmit)="onsubmit();bForm.reset();">
+
+
+
+        <div class="form-group">
+            <label for="productName">Product Name</label>
+            <input name="productName" [(ngModel)]="m.productName" required type="text"
+                [class.is-invalid]="productName.invalid && productName.touched" class="form-control"
+                id="applicantName" #productName="ngModel" placeholder="" pattern="">
+            <div [hidden]="productName.valid || productName.untouched" class="alert alert-danger">
+                <div hidden="!productName.hasError('required')">productName is required </div>
+                <div [hidden]="!productName.hasError('pattern')">approductName must contain minimum 2
+                    characters</div>
+            </div>
+
+
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input name="price" [(ngModel)]="m.price" required type="text"
+                [class.is-invalid]="price.invalid && price.touched" class="form-control"
+                id="price" #price="ngModel" placeholder="" pattern="^[0-9]{1,}">
+            <div [hidden]="price.valid || price.untouched" class="alert alert-danger">
+                <div hidden="!price.hasError('required')">price is required </div>
+                <div [hidden]="!price.hasError('pattern')">minimum 1 number</div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="totalprice">Total Price</label>
+            <input name="totalprice" [(ngModel)]="m.totalprice" required type="text"
+                [class.is-invalid]="totalprice.invalid && totalprice.touched" class="form-control"
+                id="totalprice" #totalprice="ngModel" placeholder="" pattern="^[0-9]{1,}">
+            <div [hidden]="totalprice.valid || totalprice.untouched" class="alert alert-danger">
+                <div hidden="!totalprice.hasError('required')">price is required </div>
+                <div [hidden]="!totalprice.hasError('pattern')">minimum 1 number</div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="category">Category</label>
+            <input name="category" [(ngModel)]="m.category" required type="text"
+                [class.is-invalid]="category.invalid && category.touched"
+                class="form-control" id="category" #category="ngModel"
+                placeholder="" pattern="">
+            <div [hidden]="category.valid || category.untouched"
+                class="alert alert-danger">
+                <div hidden="!category.hasError('required')">category is required
+                </div>
+                <div [hidden]="!category.hasError('pattern')">category must contain
+                    minimum 2 characters</div>
+            </div>
+
+        </div>
+
+       
+
+
+        <div class="form-group">
+            <label for="stock">Stock</label>
+            <input name="stock" [(ngModel)]="m.stock" required type="text"
+                [class.is-invalid]="stock.invalid && stock.touched"
+                class="form-control" id="stock" #stock="ngModel" placeholder=""
+                pattern="^[0-9 ]{1,}">
+            <div [hidden]="stock.valid || stock.untouched" class="alert alert-danger">
+                <div hidden="!stock.hasError('required')">stock is required </div>
+                <div [hidden]="!stock.hasError('pattern')">stock has minimium 1 numbers
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label for="discount">discount</label>
+            <input name="discount" [(ngModel)]="m.discount" required type="text"
+                [class.is-invalid]="discount.invalid && discount.touched"
+                class="form-control" id="discount" #discount="ngModel" placeholder=""
+                pattern="^[0-9 ]{1,}">
+            <div [hidden]="discount.valid || discount.untouched" class="alert alert-danger">
+                <div hidden="!discount.hasError('required')">Discount is required </div>
+                <div [hidden]="!discount.hasError('pattern')">Discount has minimium 1 numbers
+                </div>
+            </div>
+
+        </div>
+       
+        <div class="form-group">
+            <label for="star">star</label>
+            <input name="star" [(ngModel)]="m.star" required type="text"
+                [class.is-invalid]="star.invalid && star.touched"
+                class="form-control" id="star" #star="ngModel" placeholder=""
+                pattern="^[0-9 ]{4,}.">
+            <div [hidden]="star.valid || star.untouched" class="alert alert-danger">
+                <div hidden="!star.hasError('required')">star is required </div>
+                <div [hidden]="!star.hasError('pattern')">star has minimium 3 numbers
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="form-group">
+            <label for="image">Image Link</label>
+            <input name="image" [(ngModel)]="m.image" required type="text"
+                [class.is-invalid]="image.invalid && image.touched" class="form-control" id="image"
+                #image="ngModel" placeholder="">
+
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input name="description" [(ngModel)]="m.description" required type="text"
+                [class.is-invalid]="description.invalid && description.touched" class="form-control"
+                id="description" #description="ngModel" placeholder="" pattern="">
+            <div [hidden]="description.valid || description.untouched" class="alert alert-danger">
+                <div hidden="!description.hasError('required')">description is required </div>
+                <div [hidden]="!description.hasError('pattern')">description must contain minimum 1
+                    character
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+        <button  type="submit" class="btn btn-primary">Submit</button>
+
+
+    </form>
+
+</div>
+

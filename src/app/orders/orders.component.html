@@ -1,0 +1,114 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<a href="edit" class="btn btn-primary">Add Product</a>
+
+
+<div>
+    <table class=" table table-striped table-hover ">
+        <thead>
+            <tr style="font-size: small;">
+            <th>Id</th>
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>Stock</th>
+                <th>TotalPrice</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>StarRating</th>
+                <th>Discount</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of b">
+                <td>{{p.productId}}</td>
+                <td>{{p.productName}}</td>
+                <td>{{p.description}}</td>
+                <td>{{p.stock}}</td>
+                <td>{{p.totalprice}}</td>
+                <td>{{p.price}}</td>
+                <td>{{p.category}}</td>
+                <td>{{p.star}}</td>
+                <td>{{p.discount}}</td>
+                <td>
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                        data-bs-target="#editModal" (click)="editData(p)">Edit</button>
+
+                </td>
+                <td>
+                    <button type="button" class="btn btn-outline-danger" (click)="DeleteData(p.productId)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Product's Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="formValue">
+                    <div class="mb-3">
+                        <label for="productId" class="form-label">ID</label>
+                        <input type="number" formControlName="productId" class="form-control" id="productId">
+                    </div>
+                    <div class="mb-3">
+                        <label for="productName" class="form-label">Product Name</label>
+                        <input type="text" formControlName="productName" class="form-control" id="productName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="totalprice" class="form-label">Total Price</label>
+                        <input type="text" formControlName="totalprice" class="form-control" id="totalprice">
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="text" formControlName="price" class="form-control" id="price">
+                    </div>
+                    <div class="mb-3">
+                        <label for="discount" class="form-label">Discount</label>
+                        <input type="text" formControlName="discount" class="form-control" id="discount">
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <input type="text" formControlName="category" class="form-control"
+                            id="category">
+                    </div>
+                    <div class="mb-3">
+                        <label for="star" class="form-label">Star </label>
+                        <input type="text" formControlName="star" class="form-control"
+                            id="star">
+                    </div>
+                    <div class="mb-3">
+                        <label for="stock" class="form-label">Stock</label>
+                        <input type="email" formControlName="stock" class="form-control" id="stock">
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Image</label>
+                        <input type="text" formControlName="image" class="form-control" id="image">
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <input type="text" formControlName="description" class="form-control" id="description">
+                    </div>
+                    
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" (click)="updateData()">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+

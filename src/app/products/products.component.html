@@ -1,0 +1,230 @@
+<br>
+<br>
+<br>
+
+
+
+
+
+
+
+<div class="weapper">
+<div class="container">
+  <div class="bg-white rounded d-flex align-items-center justify-content-between fixed-top" id="header" style="margin: 70px;"> <button
+      class="btn btn-hide text-uppercase" type="button" data-toggle="collapse" data-target="#filterbar"
+      aria-expanded="false" aria-controls="filterbar" id="filter-btn"> <span class="fas fa-angle-left"
+        id="filter-angle"></span> <span id="btn-txt">Hide filters</span> </button>
+   
+        <nav class="navbar navbar-expand-lg navbar-light pl-lg-0 pl-auto"> <button class="navbar-toggler" type="button"
+          data-toggle="collapse" data-target="#mynav" aria-controls="mynav" aria-expanded="false"
+          aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mynav">
+          <div (change)="onselect($event)" class="col">
+            <div class="  text-center text-dark ">
+              <div (change)="onselect($event)">
+                <button class="weap" *ngFor="let d of dropdown" value="{{d}}" id="one"
+                  (click)="onselect($event)">{{d}}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        </nav>
+
+    <div class="ml-auto mt-3 mr-2">
+
+      <nav class="navbar navbar-expand-lg navbar-light pl-lg-0 pl-auto"> <button class="navbar-toggler" type="button"
+        data-toggle="collapse" data-target="#mynav" aria-controls="mynav" aria-expanded="false"
+        aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mynav">
+        <ul class="navbar-nav d-lg-flex align-items-lg-center">
+          <li class="nav-item active"> <select name="sort" id="sort" (change)="Lowtohighprice($event)">
+              <option>Sort by Price</option>
+              <option>Low To High</option>
+              <option>High To Low</option>
+
+            </select> </li>
+
+          <li class="nav-item d-lg-none d-inline-flex"> </li>
+        </ul>
+      </div>
+    </nav>
+
+    </div>
+  </div>
+</div>
+</div>
+
+  <br>
+
+ 
+
+
+
+  <div id="content" class="my-5">
+    <div id="filterbar" class="collapse">
+      <div class="box border-bottom">
+        <div class="form-group text-center">
+          <div class="btn-group" data-toggle="buttons"> <label class="btn btn-success form-check-label"> <input
+                class="form-check-input" type="radio" (click)="reloadCurrentPage()"> Reset </label> <label
+              class="btn btn-success form-check-label active"> <input class="form-check-input" type="radio" checked>
+              Apply </label> </div>
+        </div>
+        
+      </div>
+      <div class="box border-bottom">
+        <div class="box-label text-uppercase d-flex align-items-center">Category <button class="btn ml-auto"
+            type="button" data-toggle="collapse" data-target="#inner-box" aria-expanded="false"
+            aria-controls="inner-box" id="out"> <span class="fas fa-plus"></span> </button>
+        </div>
+        <div id="inner-box" class="collapse mt-2 mr-1" >
+          
+         <div *ngFor="let d of dropdown" style="margin: 5px;"> <label class="tick"><input value="{{d}}"  type="checkbox" (click)="onselect($event)" />{{d}} <span class="check"></span> </label> </div>   
+
+        </div>
+      </div>
+     
+      <div class="box border-bottom">
+        <div class="box-label text-uppercase d-flex align-items-center">price <button class="btn ml-auto" type="button"
+            data-toggle="collapse" data-target="#price" aria-expanded="false" aria-controls="price"><span
+              class="fas fa-plus"></span></button> </div>
+        <div class="collapse" id="price">
+
+          <div class="my-1"> <label class="tick">Low To High<input type="checkbox" (click)="lessPrice()"> <span class="check"></span> </label>
+          </div>
+          <div class="my-1"> <label class="tick">High To Low  <input type="checkbox"> <span class="check" (click)="MorePrice()"></span> </label>
+          </div>
+
+        </div>
+      </div>
+    
+    </div>
+
+    <div id="products">
+      <div class="row mx-0">
+        <div class="col-lg-4 col-md-6" *ngFor="let product of  n | filter:searchKey:'productName';index as i ">
+          <div class="card d-flex flex-column align-items-center">
+
+
+            <div class="product-name">{{product.productName}}</div>
+            <div class="card-img"> <img src="{{product.image}}" alt="" routerLink="/detail/{{product.productId}}">
+            </div>
+            <!-- <h5 class="text-muted text-center mt-auto">{{product.category}}</h5> -->
+
+
+            <div class="star-rating">
+              <ul class="list-inline">
+                <ngb-rating [max]="starrating[i]" [rate]="starrating[i]" [readonly]="true"></ngb-rating>
+                <li  *ngIf="halfstar[i]!=0" class="list-inline-item" style="padding-left:3px;"><i
+                    class="fa fa-star-half-o"></i>
+                </li>
+                <ngb-rating *ngIf="halfstar[i]!=0" [max]="5-(starrating[i]+1)" [readonly]="true"></ngb-rating>
+                <ngb-rating *ngIf="halfstar[i]==0" [max]="5-(starrating[i])" [readonly]="true"></ngb-rating>
+              </ul>
+            </div>
+
+
+            <h4 *ngIf="product.stock==0" style="color: red;"> Out Of stock</h4>
+            <p class="text-muted text-center mt-auto" *ngIf="product.stock!=0"><b>Available Stock :-
+                &nbsp;{{product.stock}}</b></p>
+            <div class="text-muted text-center mt-auto"> <b
+                style="color: rgb(18, 228, 18);">{{product.price|currency:'INR'}}</b><span style="color:red;"> (- {{product.discount}}% off)</span></div>
+            <p class="text-muted text-center mt-auto">M.R.P.: &nbsp;<s style="color: red;">({{product.totalprice|currency:'INR'}})</s>
+            </p>
+
+
+
+            <div class="buttons">
+
+              <a class="buy btn btn-primary text-center my-4">Show More</a>
+              &nbsp; &nbsp; &nbsp; &nbsp;
+              <a *ngIf="login==true" class="cart btn btn-warning text-center my-4"
+                (click)="AddToWatchList(product)"><mat-icon>shopping_cart</mat-icon>Add to cart</a>
+              <a *ngIf="login!=true" class=" Add btn btn-warning text-center my-4"
+                (click)="AddtoCart(product.productId,product)"><mat-icon>shopping_cart</mat-icon>Add to cart</a>
+            </div>
+
+
+          </div>
+
+
+
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer>
+  <div class="footer-content">
+    <img src="https://cdn-icons-png.flaticon.com/512/2331/2331970.png" class="logo" alt="">
+    <div class="footer-ul-container">
+      <ul class="category">
+        <li class="category-title">men</li>
+        <li><a href="#" class="footer-link">t-shirts</a></li>
+        <li><a href="#" class="footer-link">sweatshirts</a></li>
+        <li><a href="#" class="footer-link">shirts</a></li>
+        <li><a href="#" class="footer-link">jeans</a></li>
+        <li><a href="#" class="footer-link">trousers</a></li>
+        <li><a href="#" class="footer-link">shoes</a></li>
+        <li><a href="#" class="footer-link">casuals</a></li>
+        <li><a href="#" class="footer-link">formals</a></li>
+        <li><a href="#" class="footer-link">sports</a></li>
+        <li><a href="#" class="footer-link">watch</a></li>
+      </ul>
+      <ul class="category">
+        <li class="category-title">women</li>
+        <li><a href="#" class="footer-link">t-shirts</a></li>
+        <li><a href="#" class="footer-link">sweatshirts</a></li>
+        <li><a href="#" class="footer-link">shirts</a></li>
+        <li><a href="#" class="footer-link">jeans</a></li>
+        <li><a href="#" class="footer-link">trousers</a></li>
+        <li><a href="#" class="footer-link">shoes</a></li>
+        <li><a href="#" class="footer-link">casuals</a></li>
+        <li><a href="#" class="footer-link">formals</a></li>
+        <li><a href="#" class="footer-link">sports</a></li>
+        <li><a href="#" class="footer-link">watch</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <p class="info">support emails - help@clothing.com, customersupport@clothing.com</p>
+  <p class="info">telephone - 180 00 00 001, 180 00 00 002</p>
+  <div class="footer-social-container">
+    <div>
+      <a href="#" class="social-link">terms & services</a>
+      <a href="#" class="social-link">privacy page</a>
+    </div>
+    <div>
+
+      <a href="#" class="social-link"><img src="https://cdn-icons-png.flaticon.com/512/2504/2504918.png" width="30px"
+          height="30px" alt="">
+        instagram</a>
+
+      <a href="#" class="social-link"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" width="30px"
+          height="30px" alt="">
+        facebook</a>
+
+      <a href="#" class="social-link"><img src="https://cdn-icons-png.flaticon.com/512/2504/2504947.png" width="30px"
+          height="30px" alt="">
+        twitter</a>
+    </div>
+  </div>
+  <p class="footer-credit">Clothing, Best apparels online store</p>
+</footer>

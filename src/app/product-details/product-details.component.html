@@ -1,0 +1,298 @@
+<br>
+
+
+
+
+
+
+
+<div class="container" style="font-family: 'Times New Roman', Times, serif;">
+  <div id="content" class="my-5">
+
+   
+
+    
+    
+    <div id="products">
+
+
+
+
+      <!-- <div id="filterbar">
+        <div class="box border-bottom">
+          <div class="first-btn">
+            <div class="btn-group" data-toggle="buttons"> <label
+                class="btn btn-success form-check-label active"> <input class="form-check-input" type="radio" checked>
+                Apply </label> </div>
+          </div>
+          <div> <label class="tick">New <input type="checkbox" checked="checked"> <span class="check"></span> </label>
+          </div>
+          <div> <label class="tick">Sale <input type="checkbox"> <span class="check"></span> </label> </div>
+        </div>
+        <div class="box border-bottom">
+          <div class="box-label text-uppercase d-flex align-items-center">Outerwear <button class="btn ml-auto"
+              type="button" data-toggle="collapse" data-target="#inner-box" aria-expanded="false"
+              aria-controls="inner-box" id="out" > <span class="fas fa-plus"></span> </button>
+          </div>
+          <div id="inner-box" class="collapse mt-2 mr-1">
+            <div class="my-1"> <label class="tick">Windbreaker <input type="checkbox" checked="checked"> <span
+                  class="check"></span> </label> </div>
+            <div class="my-1"> <label class="tick">Jumpsuit <input type="checkbox"> <span class="check"></span> </label>
+            </div>
+            <div class="my-1"> <label class="tick">Jacket <input type="checkbox"> <span class="check"></span> </label>
+            </div>
+            <div class="my-1"> <label class="tick">Coat <input type="checkbox"> <span class="check"></span> </label>
+            </div>
+            <div class="my-1"> <label class="tick">Raincoat <input type="checkbox"> <span class="check"></span> </label>
+            </div>
+            <div class="my-1"> <label class="tick">Handbag <input type="checkbox" checked> <span class="check"></span>
+              </label> </div>
+            <div class="my-1"> <label class="tick">Warm vest <input type="checkbox"> <span class="check"></span> </label>
+            </div>
+            <div class="my-1"> <label class="tick">Wallets <input type="checkbox" checked> <span class="check"></span>
+              </label> </div>
+          </div>
+        </div>
+        <div class="box border-bottom">
+          <div class="box-label text-uppercase d-flex align-items-center">season <button class="btn ml-auto" type="button"
+              data-toggle="collapse" data-target="#inner-box2" aria-expanded="false" aria-controls="inner-box2"><span
+                class="fas fa-plus"></span></button> </div>
+          <div id="inner-box2" class="collapse mt-2 mr-1">
+            <div class="my-1"> <label class="tick">Spring <input type="checkbox" checked="checked"> <span
+                  class="check"></span> </label> </div>
+            <div class="my-1"> <label class="tick">Summer <input type="checkbox"> <span class="check"></span> </label>
+            </div>
+            <div class="my-1"> <label class="tick">Autumn <input type="checkbox" checked> <span class="check"></span>
+              </label> </div>
+            <div class="my-1"> <label class="tick">Winter <input type="checkbox"> <span class="check"></span> </label>
+            </div>
+            <div class="my-1"> <label class="tick">Rainy <input type="checkbox"> <span class="check"></span> </label>
+            </div>
+          </div>
+        </div>
+        <div class="box border-bottom">
+          <div class="box-label text-uppercase d-flex align-items-center">price <button class="btn ml-auto" type="button"
+              data-toggle="collapse" data-target="#price" aria-expanded="false" aria-controls="price"><span
+                class="fas fa-plus"></span></button> </div>
+          <div class="collapse" id="price">
+            <div class="middle">
+              <div class="multi-range-slider"> <input type="range" id="input-left" min="0" max="100" value="10"> <input
+                  type="range" id="input-right" min="0" max="100" value="50">
+                <div class="slider">
+                  <div class="track"></div>
+                  <div class="range"></div>
+                  <div class="thumb left"></div>
+                  <div class="thumb right"></div>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between mt-2">
+              <div> <span id="amount-left" class="font-weight-bold"></span> uah </div>
+              <div> <span id="amount-right" class="font-weight-bold"></span> uah </div>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-label text-uppercase d-flex align-items-center">size <button class="btn ml-auto" type="button"
+              data-toggle="collapse" data-target="#size" aria-expanded="false" aria-controls="size"><span
+                class="fas fa-plus"></span></button> </div>
+          <div id="size" class="collapse">
+            <div class="btn-group d-flex align-items-center flex-wrap" data-toggle="buttons"> <label
+                class="btn btn-success form-check-label"> <input class="form-check-input" type="checkbox"> 80 </label>
+              <label class="btn btn-success form-check-label"> <input class="form-check-input" type="checkbox" checked> 92
+              </label> <label class="btn btn-success form-check-label"> <input class="form-check-input" type="checkbox"
+                  checked> 102 </label> <label class="btn btn-success form-check-label"> <input class="form-check-input"
+                  type="checkbox" checked> 104 </label> <label class="btn btn-success form-check-label"> <input
+                  class="form-check-input" type="checkbox" checked> 106 </label> <label
+                class="btn btn-success form-check-label"> <input class="form-check-input" type="checkbox" checked> 108
+              </label> </div>
+          </div>
+        </div>
+      </div> -->
+
+
+
+
+
+      <div class="codepen-container" id="box">
+        <div class="content-container" *ngFor="let product of single ;index as i">
+          <div class="left-container">
+            <div class="triangle-topleft">
+              <div class="back-arrow" id="buy-toaster" routerLink="/"></div>
+            </div>
+
+            <div class="product-image--container">
+              <img class="product-image--featured" id="featured"
+                src="{{product.image}}" alt="toaster"  />
+                
+            </div>
+          </div>
+          
+          <div class="right-container">
+
+
+            <!-- <div class="star-rating text-right"  >
+              <ul class="list-inline">
+                <ngb-rating [max]="starrating[i]" [rate]="starrating[i]" [readonly]="true"></ngb-rating>
+                <li *ngIf="halfstar[i]!=0" class="list-inline-item" style="padding-left:5px"><i class="fa fa-star-half-o"></i>
+                </li>
+                <ngb-rating *ngIf="halfstar[i]!=0" [max]="5-(starrating[i]+1)" [readonly]="true"></ngb-rating>
+                <ngb-rating *ngIf="halfstar[i]==0" [max]="5-(starrating[i])" [readonly]="true"></ngb-rating>
+              </ul>
+            </div>
+
+           
+            <p class="text-right para">Based on Rating</p> -->
+
+            <div class="right-container">
+              <h1 class="title">{{product.productName}}</h1>
+              
+              <h2 class="subtitle subtitle-container">{{product.category}}</h2>
+              <h4 *ngIf="product.stock==0" style="color: red;"> Out Of stock</h4>
+              <p *ngIf="product.stock!=0"><b>Stock :- &nbsp;{{product.stock}}</b></p>
+            </div>
+            <div class="subtitle subtitle-container star-rating"   >
+              <ul class="list-inline">
+                <ngb-rating [max]="starrating[i]" [rate]="starrating[i]" [readonly]="true"></ngb-rating>
+                <li *ngIf="halfstar[i]!=0" class="list-inline-item" style="padding-left:5px"><i class="fa fa-star-half-o"></i>
+                </li>
+                <ngb-rating *ngIf="halfstar[i]!=0" [max]="5-(starrating[i]+1)" [readonly]="true"></ngb-rating>
+                <ngb-rating *ngIf="halfstar[i]==0" [max]="5-(starrating[i])" [readonly]="true"></ngb-rating>
+              </ul>
+            </div>
+            <span>
+              <p>
+                <span class="emphasize">{{product.price|currency:'INR'}} &nbsp;&nbsp;<span style="color:red;"> ( - {{product.discount}}% off )</span>&ensp;&nbsp;&nbsp;&nbsp;
+               <span class="text-right para" style="color: rgb(189, 184, 184);">M.R.P.: &ensp;&nbsp;</span>  <s style="color: red;" class="small">( {{product.totalprice|currency:'INR'}} )</s>
+                </span>
+              </p>
+             
+             
+            </span>
+            <div>
+              <h5 class="title">Product Description: </h5>
+              <!-- <div class="subtitle-container">
+                <span>Size: 1-Pack</span>
+                <span>|</span>
+                <span>Color: Black</span>
+              </div> -->
+              <p> {{product.description}}</p>
+              <br>
+            </div>
+          
+            <div>
+              <button *ngIf="login==true" class="my-btn flex-btn" style="float: right;" (click)="AddToCart(product)" >
+                <span>
+                  <img src="https://cdn-icons-png.flaticon.com/512/3649/3649778.png"
+                    class="cart-icon" />
+                </span>
+                <span class="btn-text">Add to Cart
+                </span>
+              </button>
+
+              <!-- <a *ngIf="login!=true" class=" Add btn btn-warning text-center my-4"
+              (click)="AddtoCart(product.productId,product)"><mat-icon>shopping_cart</mat-icon>Add to cart</a> -->
+
+              <button  *ngIf="login!=true"  class="my-btn flex-btn" style="float: right;" (click)="AddtoCart(product.productId,product)" >
+                <span>
+                  <img src="https://cdn-icons-png.flaticon.com/512/3649/3649778.png"
+                    class="cart-icon" />
+                </span>
+                <span class="btn-text">Add to Cart
+                </span>
+              </button>
+
+            </div>
+         
+          <!-- </div> -->
+        
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="container" style="font-family: 'Times New Roman', Times, serif;">
+  <h2 >Products related to this item</h2>
+  <ul class="cards">
+    <li class="card"  *ngFor="let card of CategoryIteams ;index as i " >
+
+      <div class="content-container"   >
+        <div class="left-container"  >
+          
+          <h2 class="card-title"><b>{{card.productName}}</b></h2>
+          <div class="product-image--container">
+            <i type="button"  routerLink="/detail/{{card.productId}}" (click)="ShowToMainProduct()">
+
+            <img class="img" id="featured"
+              src="{{card.image}}" alt="toaster"   style="border: solid white;"  />
+            </i>
+          </div>
+        </div>
+        
+        <div class="right-container">
+      
+          <!-- <div class="star-rating text-right"  >
+            <ul class="list-inline">
+              <ngb-rating [max]="starrating[i]" [rate]="starrating[i]" [readonly]="true"></ngb-rating>
+              <li *ngIf="halfstar[i]!=0" class="list-inline-item" style="padding-left:5px"><i class="fa fa-star-half-o"></i>
+              </li>
+              <ngb-rating *ngIf="halfstar[i]!=0" [max]="5-(starrating[i]+1)" [readonly]="true"></ngb-rating>
+              <ngb-rating *ngIf="halfstar[i]==0" [max]="5-(starrating[i])" [readonly]="true"></ngb-rating>
+            </ul>
+          </div>
+
+         
+          <p class="text-right para">Based on Rating</p>
+       -->
+          <div>
+          
+            
+            <h2 class="subtitle subtitle-container">{{card.category}}</h2>
+            <h4 *ngIf="card.stock==0" style="color: red;"> Out Of stock</h4>
+            <p *ngIf="card.stock!=0"><b>Stock :- &nbsp;{{card.stock}}</b></p>
+          </div>
+
+
+          <div class="star-rating  subtitle"  >
+            <ul class="list-inline">
+              <ngb-rating [max]="starrating[i]" [rate]="starrating[i]" [readonly]="true"></ngb-rating>
+              <li *ngIf="halfstar[i]!=0" class="list-inline-item" style="padding-left:5px"><i class="fa fa-star-half-o"></i>
+              </li>
+              <ngb-rating *ngIf="halfstar[i]!=0" [max]="5-(starrating[i]+1)" [readonly]="true"></ngb-rating>
+              <ngb-rating *ngIf="halfstar[i]==0" [max]="5-(starrating[i])" [readonly]="true"></ngb-rating>
+            </ul>
+          </div>
+
+          <span>
+            <p>
+              <span class="emphasize">{{card.price|currency:'INR'}} &nbsp;&nbsp;&nbsp;<span style="color:red;"> (- {{card.discount}}% off )</span>&nbsp;&nbsp;&nbsp;&nbsp;<br>
+              <span  class="text-right para" style="color: rgb(189, 184, 184);">M.R.P.: &ensp;&nbsp;</span>  <s style="color: red; text-align: center;" class="small"> {{card.totalprice|currency:'INR'}}</s>
+              </span>
+            </p>
+          </span>
+        
+        </div>
+      </div>
+      <div class="card-link-wrapper">
+        <button class="my-btn flex-btn"  routerLink="/detail/{{card.productId}}" (click)="ShowToMainProduct()" >
+          
+          <span class="btn-text"> Show More
+          </span>
+        </button>
+      </div>
+    </li>
+
+  </ul>
+</div>
+
+
+
+
+

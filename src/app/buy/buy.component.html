@@ -1,0 +1,336 @@
+<br>
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ng-container *ngIf="product.length>0">
+
+<div class="card" style="border-radius: 10px;font-family: 'Times New Roman', Times, serif;">
+  <div class="card-header px-4 py-5" style=" background: rgb(235, 232, 232);">
+    <h5 class="text-muted mb-0">Thanks for your Order, <span style="color:gold;"> <strong>{{username}}
+        </strong></span>!</h5>
+  </div>
+  <div class="card-body p-4">
+
+
+
+
+
+
+
+    <div class="card rounded-3 mb-4" *ngFor="let p of product | filter:searchKey:'productName';index as i">
+      <div class="card-body p-1">
+        <div class="row d-flex justify-content-between align-items-center">
+          <div class="col-md-2 col-lg-2 col-xl-2">
+            <img src="{{p.image}}" class="img-fluid rounded-3" alt=" ">
+          </div>
+          <div class="col-md-3 col-lg-3 col-xl-3">
+            <p class="mb-0"> <strong>{{p.productName}}</strong></p>
+            <br>
+            <p class="mb-0">
+              <strong>Quantity :{{m[i].numberofitems}}</strong>
+             
+            </p>
+          </div>
+          <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+            <p *ngIf="m[i].status==0" class=" text-center my-4" style="color:gold;"><strong> Order Placed</strong>
+              <br>
+              <img src="https://cdn-icons-png.flaticon.com/512/9431/9431409.png" style="width: 50px; height: 50px;">
+            </p>
+
+            <p *ngIf="m[i].status==1" class=" text-center my-4" style="color:green;"><strong>Order Approved</strong>
+
+              <img src="https://cdn-icons-png.flaticon.com/512/3502/3502601.png" class="IMGgg"
+                style="width: 50px; height: 50px;">
+
+            </p>
+
+            <p *ngIf="m[i].status==2" class="text-center my-4" style="color:green;"><strong>Out for Delivery</strong>
+
+              <img src="https://cdn-icons-png.flaticon.com/512/411/411712.png" class="IMGgg"
+                style="width: 50px; height: 50px;">
+
+            </p>
+
+            <p *ngIf="m[i].status==3" class=" text-center my-4" style="color:green;"><strong>Order Delivered</strong>
+
+              <img src="https://cdn-icons-png.flaticon.com/512/4537/4537278.png" class="IMGgg"
+                style="width: 50px; height: 50px;">
+
+            </p>
+
+            <p *ngIf="m[i].status==4" class=" text-center my-4" style="color: red;"><strong> Order Rejected</strong>
+<br>
+              <img src="https://cdn-icons-png.flaticon.com/512/9083/9083252.png" class="IMGgg"
+                style="width: 50px; height: 50px;">
+            </p>
+            <p *ngIf="m[i].status==5" class=" text-center my-4" style="color: red;"><strong> Order Cancelled</strong>
+
+              <img src="https://cdn-icons-png.flaticon.com/512/9083/9083252.png" class="IMGgg"
+                style="width: 50px; height: 50px;">
+            </p>
+
+          </div>
+          <div class="col-md-2 col-lg-2 col-xl-2 d-flex">
+
+            <button type="button" class="btn btn-primary p-2" data-toggle="modal" data-target="#myModal"
+              style="font-family: 'Times New Roman', Times, serif;" (click)="FilterOrder(m[i].buyId)"
+              *ngIf="m[i].status<4 && m[i].status!=3">
+              Track your order
+              <span><img src="https://cdn-icons-png.flaticon.com/512/3788/3788255.png" class="IMGgg"
+                  style="width: 25px; height: 25px;"></span>
+            </button>
+
+
+          </div>
+
+          <div class="col-md-2 col-lg-2 col-xl-2 d-flex">
+
+           <!-- <button *ngIf="m[i].status==4" style="margin-right: 70px;color: red;" >Order Rejected</button> -->
+              <button type="button" class="btn btn-danger p-2" 
+                style="font-family: 'Times New Roman', Times, serif;" (click)="ReturnOrder(m[i].buyId)"
+                *ngIf="m[i].status<4 && m[i].status!=3">
+                Cancel order
+                <span><img src="https://cdn-icons-png.flaticon.com/512/5267/5267950.png" class="IMGgg"
+                  style="width: 25px; height: 25px;"></span>
+              </button>
+
+             
+          </div>
+
+
+          <!-- The Modal -->
+          <div class="modal fade" id="myModal">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content ">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title mx-auto">Order Status<br>AWB Number-5335T5S</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <h3 *ngIf="trackstatus==4" style="text-align: center;color: red;">Order Canclied
+                    <br>
+                    <img src="https://cdn-icons-png.flaticon.com/512/5268/5268671.png" class="IMGgg"
+                      style="width: 100px; height: 100px;">
+                  </h3>
+                  <div class="progress-track">
+                    <ul id="progressbar">
+
+                      <li *ngIf="(trackstatus>=0) && (trackstatus!=4 )" class="step0 active " id="step1">Order placed
+                        <br>
+                        <img src="https://cdn-icons-png.flaticon.com/512/2728/2728447.png" class="IMGgg"
+                          style="width: 50px; height: 50px;">
+                      </li>
+
+
+
+
+                      <li *ngIf="(trackstatus>=1)&& (trackstatus!=4 )" class="step0 active" id="step2">Order Approved
+                        <br>
+                        <img src="https://cdn-icons-png.flaticon.com/512/3045/3045670.png" class="IMGgg"
+                          style="width: 50px; height: 50px;">
+                      </li>
+
+
+                      <li *ngIf="(trackstatus<1)&& (trackstatus!=4 )" class="step0 " id="step2">Order Approved
+                        <br>
+                        <img src="https://cdn-icons-png.flaticon.com/512/3045/3045670.png" class="IMGgg"
+                          style="width: 50px; height: 50px;">
+                      </li>
+
+
+
+
+
+                      <li *ngIf="(trackstatus>=2)&& (trackstatus!=4 )" class="step active text-right" id="step3"><span
+                          id="three">Out for Delivery</span>
+                        <br>
+                        <img src="https://cdn-icons-png.flaticon.com/512/411/411712.png" class="IMGgg"
+                          style="width: 50px; height: 50px;">
+                      </li>
+                      <li *ngIf="(trackstatus<2)&& (trackstatus!=4 )" class="step text-right " id="step3">Out for
+                        Delivery
+                        <br>
+                        <img src="https://cdn-icons-png.flaticon.com/512/411/411712.png" class="IMGgg"
+                          style="width: 50px; height: 50px;">
+                      </li>
+
+
+                      <li *ngIf="(trackstatus>=3)&& (trackstatus!=4 )" class="step0 active text-right" id="step4">
+                        Delivered
+                        <br>
+                        <img src="https://cdn-icons-png.flaticon.com/512/4537/4537278.png" class="IMGgg"
+                          style="width: 30px; height: 30px;">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3715/3715287.png" class="IMGgg"
+                          style="width: 50px; height: 50px;">
+                      </li>
+                      <li *ngIf="(trackstatus<3)&& (trackstatus!=4 )" class="step0 text-right" id="step4">Delivered
+                        <br>
+                        <img src="https://cdn-icons-png.flaticon.com/512/4537/4537278.png" class="IMGgg"
+                          style="width: 30px; height: 30px;">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3715/3715287.png" class="IMGgg"
+                          style="width: 50px; height: 50px;">
+                      </li>
+                    </ul>
+
+                  </div>
+                  <div class="row">
+                    <div class="col-9">
+                      <div class="details d-table">
+                        <div class="d-table-row">
+                          <div class="d-table-cell" *ngFor="let Address of AddressDone">
+                            <p> Address:</p>
+                            <p style="font-size:medium;"> HouseNo: {{Address.houseNumber}}, {{Address.colony}},
+                              {{Address.city}}, {{Address.district}}, {{Address.pinCode}},
+                              {{Address.state}},{{Address.country}}.</p>
+                            <p> PhoneNumber:- <span style="font-size:medium;">{{Address.phoneNumber}}</span></p>
+                          </div>
+                          <!-- <div class="d-table-cell">
+                  UPS Expedited
+                </div> -->
+                        </div>
+                        <div class="d-table-row">
+                          <div class="d-table-cell">
+                            Estimated Delivery
+                          </div>
+                          <div class="d-table-cell">
+                            19/02/2023
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <div class="d-table-row">
+                        <a href=#><i class="fa fa-phone" aria-hidden="true"></i>
+                          <p style="color: white;">+917337246095</p>
+                        </a>
+                      </div>
+                      <div class="d-table-row">
+                        <a href=#><i class="fa fa-envelope" aria-hidden="true"></i>
+                          <p style="color: white;">ecommers@gmail.com</p>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+     
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+<br>
+
+
+
+
+
+<footer>
+  <div class="footer-content">
+    <img src="https://cdn-icons-png.flaticon.com/512/2331/2331970.png" class="logo" alt="">
+    <div class="footer-ul-container">
+      <ul class="category">
+        <li class="category-title">men</li>
+        <li><a href="#" class="footer-link">t-shirts</a></li>
+        <li><a href="#" class="footer-link">sweatshirts</a></li>
+        <li><a href="#" class="footer-link">shirts</a></li>
+        <li><a href="#" class="footer-link">jeans</a></li>
+        <li><a href="#" class="footer-link">trousers</a></li>
+        <li><a href="#" class="footer-link">shoes</a></li>
+        <li><a href="#" class="footer-link">casuals</a></li>
+        <li><a href="#" class="footer-link">formals</a></li>
+        <li><a href="#" class="footer-link">sports</a></li>
+        <li><a href="#" class="footer-link">watch</a></li>
+      </ul>
+      <ul class="category">
+        <li class="category-title">women</li>
+        <li><a href="#" class="footer-link">t-shirts</a></li>
+        <li><a href="#" class="footer-link">sweatshirts</a></li>
+        <li><a href="#" class="footer-link">shirts</a></li>
+        <li><a href="#" class="footer-link">jeans</a></li>
+        <li><a href="#" class="footer-link">trousers</a></li>
+        <li><a href="#" class="footer-link">shoes</a></li>
+        <li><a href="#" class="footer-link">casuals</a></li>
+        <li><a href="#" class="footer-link">formals</a></li>
+        <li><a href="#" class="footer-link">sports</a></li>
+        <li><a href="#" class="footer-link">watch</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <p class="info">support emails - help@clothing.com, customersupport@clothing.com</p>
+  <p class="info">telephone - 180 00 00 001, 180 00 00 002</p>
+  <div class="footer-social-container">
+    <div>
+      <a href="#" class="social-link">terms & services</a>
+      <a href="#" class="social-link">privacy page</a>
+    </div>
+    <div>
+
+      <a href="#" class="social-link"><img src="https://cdn-icons-png.flaticon.com/512/2504/2504918.png" width="30px"
+          height="30px" alt="">
+        instagram</a>
+
+      <a href="#" class="social-link"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" width="30px"
+          height="30px" alt="">
+        facebook</a>
+
+      <a href="#" class="social-link"><img src="https://cdn-icons-png.flaticon.com/512/2504/2504947.png" width="30px"
+          height="30px" alt="">
+        twitter</a>
+    </div>
+  </div>
+  <p class="footer-credit">Clothing, Best apparels online store</p>
+</footer>
+</ng-container>
+
+
+<ng-container *ngIf="product.length==0"><div class="row" style="margin-left:0px;margin-top: 50px;"><div
+  class="container" style="padding-top: 50px;">
+  <div class="card1 w-50" style="margin-left: 200px;">
+     <div class="card-body" style="margin-left: 170px;"><img src="https://cdn-icons-png.flaticon.com/512/9242/9242745.png"
+        alt="emptycart" width="300px"></div><div class="card-title"
+      style="margin-left:200px"><br>
+      <h5 style="color: red;">Your G Mart Order is empty!</h5></div>
+      <br>
+   <a href="/"><button class="btn btn-warning" style="margin-bottom: 10px;margin-left: 250px;">Shop
+        Now</button></a></div>
+</div></div></ng-container>

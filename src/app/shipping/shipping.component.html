@@ -1,0 +1,77 @@
+<br>
+<br>
+<br>
+
+<div>
+    <table class=" table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th>UserName</th>
+                <th>Id</th>
+                <th>Product Name</th>
+                <th>Image</th>
+                <th>Price</th>  
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of m;index as i">
+                <td>{{o[i].userName}}</td>
+                <td>{{p.productId}}</td>
+                <td>{{p.productName}}</td>
+                <td><img src="{{p.image}}" style="width:100px"></td>
+                
+                
+                <td>{{p.price}}</td>
+                <td>
+                    <button *ngIf="o[i].status==0" class="btn btn-warning"(click)=Approve(o[i].buyId)>Order Approve
+                        <img src="https://cdn-icons-png.flaticon.com/512/3045/3045670.png" class="IMGgg"
+                        style="width: 30px; height: 30px;">
+                           
+                    </button>
+                    <button *ngIf="o[i].status==1" class="btn btn-warning"(click)=shipping(o[i].buyId)>Order Shipping
+                        <img src="https://cdn-icons-png.flaticon.com/512/411/411712.png" class="IMGgg"
+                        style="width: 30px; height: 30px;">
+                           
+                    </button>
+                    <button *ngIf="o[i].status==2" class="btn btn-warning"(click)=delivered(o[i].buyId)>Order Delivere
+                        <img src="https://cdn-icons-png.flaticon.com/512/4537/4537278.png" class="IMGgg"
+                        style="width: 30px; height: 30px;">
+                           
+                    </button>
+                    <button *ngIf="o[i].status==3" class="btn btn-success"(click)=delivered(o[i].buyId)> Completed
+                        <img src="https://cdn-icons-png.flaticon.com/512/2693/2693221.png" class="IMGgg"
+                        style="width: 30px; height: 30px;">
+                           
+                    </button>
+                    
+                </td>
+                <!-- <td>
+                    
+                    <button *ngIf="o[i].status==1" class="btn btn-success"(click)=shipping(o[i].buyId)>Shipping</button>
+                   
+                </td>
+                <td>
+                  
+                    <button *ngIf="o[i].status==2" class="btn btn-success"(click)=delivered(o[i].buyId)>Delivered</button>
+                </td> -->
+                <td>
+                    <button *ngIf="o[i].status!=4 && o[i].status<1" (click)=Cancel(o[i].buyId) class="btn btn-primary" >Order Cancel
+                        <img src="https://cdn-icons-png.flaticon.com/512/9083/9083252.png" class="IMGgg"
+                style="width: 30px; height: 30px;">
+                    </button>
+                    <button *ngIf="o[i].status==4" class="btn btn-danger" >Order Rejected
+                        <img src="https://cdn-icons-png.flaticon.com/512/5268/5268671.png" class="IMGgg"
+                style="width: 30px; height: 30px;">
+                    </button>
+                    <button *ngIf="o[i].status==5" class="btn btn-danger" >Order cancelled by user
+                        <img src="https://cdn-icons-png.flaticon.com/512/5268/5268671.png" class="IMGgg"
+                style="width: 30px; height: 30px;">
+                    </button>
+                </td>
+                
+            </tr>
+        </tbody>
+    </table>
+</div>
+

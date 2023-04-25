@@ -1,0 +1,71 @@
+.navbar{
+    background-color: rgb(237, 203, 80) ;
+    font-family: 'Times New Roman', Times, serif;
+  position: fixed;
+
+}
+
+body{
+
+    background: #d1d5db;
+}
+
+/* .height{
+
+    height: 5vh;
+} */
+
+.form{
+width: 60vh;
+    position: relative;
+}
+
+.form .fa-search{
+width: 10px;
+    position: absolute;
+    top:20px;
+    left: 20px;
+    color: #9ca3af;
+
+}
+
+.form span{
+
+     position: absolute;
+    right: 17px;
+    top: 13px;
+    padding: 2px;
+    border-left: 1px solid #d1d5db;
+
+}
+
+.left-pan{
+    padding-left: 7px;
+}
+
+.left-pan i{
+   
+   padding-left: 10px;
+}
+
+.form-input{
+
+    height: 50px;
+    text-indent: 33px;
+    border-radius: 10px;
+}
+
+.form-input:focus{
+
+    box-shadow: none;
+    border:none;
+}
+ .dropdown{
+    width: 70px;
+    margin-right: 10px;
+    float:inline-start;
+    align-items: center;
+ }
+
+
+ 
